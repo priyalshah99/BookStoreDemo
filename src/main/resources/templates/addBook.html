@@ -1,0 +1,59 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+     <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	
+	<title>Add Book</title>
+</head>
+
+<body>
+
+	<div class="container">
+		<hr/><h1>New Book</h1><hr/>
+		
+		<form th:action="@{/book/addBook}" th:object="${book}" method="POST">
+			
+			<div class="form-group">
+				<label for="isbn">ISBN:</label>
+				<span style="color: red; font-weight:bold;" th:if="${isbnExists}">ISBN already exists.</span>
+				<input type="text" th:field="*{isbn}" id="isbn" class="form-control mb-4 col-4"
+					 placeholder="Enter ISBN" required/>
+			</div>
+			
+			<div class="form-group">
+				<label for="title">Title:</label>			
+				<input type="text" th:field="*{title}" id="title" class="form-control mb-4 col-4" 
+						placeholder="Enter Book title" required/>
+			</div>
+					
+			<div class="form-group">
+				<label for="price">Price:</label>
+				<input type="number" th:field="*{price}" id="price" class="form-control mb-4 col-4" 
+					min="1" step="0.01" placeholder="Enter Price" required/>
+			</div>
+					
+			<div class="form-group">
+				<label for="stock">Stock:</label>														
+				<input type="number" th:field="*{stock}" id="stock" class="form-control mb-4 col-4"
+					 min="1" placeholder="Enter Stock" required/>
+			</div>
+		
+					
+			<button type="submit" class="btn btn-success col-2">Add Book</button>
+						
+		</form>
+	
+		<hr>
+		<a th:href="@{/book/bookList}">Back to Books List</a>
+		
+		<hr>
+	</div>
+</body>
+
+</html>
+

@@ -1,0 +1,71 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+     <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title>Bookstore Demo</title>
+</head>
+
+<body>
+
+<!-- <div class="container"> -->
+<div align="center">
+
+	<hr/><h2>All Books From Database</h2><hr/>
+	<div class="container">
+	<!-- Add Book Button -->
+	<a th:href="@{/book/addBook}" class="btn btn-primary float-left btn-md mb-3">
+		Add New Book
+	</a>
+
+			
+		<table class="table table-bordered table-responsive-md">
+		<thead class="thead-dark">
+			<tr>
+				<th>ISBN</th>
+				<th>Title</th>
+				<th>Price</th>
+				<th>Stock</th>
+				<th>Edit</th>
+				<th>Delete</th>				
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="tempBook : ${bookList}">
+				
+				<td><a th:href="@{/book/bookInfo?isbn=}+${tempBook.isbn}"><span th:text="${tempBook.isbn}"></span></a></td>	
+				<td th:text="${tempBook.title}" />	
+				<td th:text="${tempBook.price}" />
+				<td th:text="${tempBook.stock}" />
+				
+				
+				<!-- Update button/link -->
+				<td>
+					<a th:href="@{/book/updateBook?isbn=}+${tempBook.isbn}" class="btn btn-success btn-sm">
+						<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+					</a>
+				</td>
+
+				<!-- Delete button/link -->				
+				<td>		
+					<a th:href="@{/book/deleteBook?isbn=}+${tempBook.isbn}" class="btn btn-danger btn-sm" 
+					 		onclick="if(!(confirm('Are you sure you want to delete this book?'))) return false">
+						<i class="fa fa-trash" aria-hidden="true"></i>
+					</a>	
+				</td>	
+			</tr>
+		</tbody>	
+		
+			
+	</table>
+</div>
+</div>
+	
+</body>
+</html>

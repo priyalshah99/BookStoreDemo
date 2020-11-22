@@ -1,0 +1,34 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+     <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	
+	<title>Book Information</title>
+</head>
+
+<body>
+
+	<div class="container">
+		<hr/><h1>Book Details</h1><hr/>
+		
+					<div>
+						<p><strong>ISBN: </strong><span th:text="${book.isbn}"></span></p>
+						<p><strong>Title: </strong><span th:text="${book.title}"></span></p>
+						<p><strong>Price: </strong><span th:text="${book.price}"></span></p>
+						<p><strong>Stock: </strong><span th:text="${book.stock}"></span></p>
+					</div>
+	
+		<hr>
+		<a th:href="@{/book/bookList}">Back to Books List</a>
+		
+		<hr>
+	</div>
+</body>
+
+</html>
+
